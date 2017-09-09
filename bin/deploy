@@ -99,7 +99,7 @@ echo "You are deploying ${BRANCH} to ${ENVIRONMENT}."
   docker tag "${ECR_NAME}:latest" "${ECR_URI}/${ECR_NAME}:latest-${ENVIRONMENT}"
 
   # Login to ECR
-  $(aws ecr get-login --region "${ECS_REGION}")
+  $(aws ecr get-login --region "${ECS_REGION}" --no-include-email)
 
   # Push to the remote repo (by date)
   docker push "${ECR_URI}/${ECR_NAME}:${ENVIRONMENT}-${VERSION}"
